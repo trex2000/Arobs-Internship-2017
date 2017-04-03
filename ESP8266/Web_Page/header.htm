@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Robot Control</title>
+<style>
+#btnUp {
+    position: absolute;
+    left: 100px;
+    top: 150px;
+    width: 100px;
+    text-align:center;
+}
+#btnDown {
+    position: absolute;
+    left: 100px;
+    top: 250px;
+    width: 100px;
+    text-align:center;
+}
+#btnLeft {
+    position: absolute;
+    left: 50px;
+    top: 200px;
+    width: 100px;
+    text-align:center;
+}
+#btnRight {
+    position: absolute;
+    left: 150px;
+    top: 200px;
+    width: 100px;
+    text-align:center;
+}
+</style>
+<script language="javascript">
+function loadXMLDoc(gpio)
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","gpio=" + gpio + ".pht",true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<h1>Robot Control</h1>
+
+<div><input type="button" id="btnUp" value="Up" onmousedown="loadXMLDoc(0)" onmouseup="loadXMLDoc(1)" />
+<div><input type="button" id="btnDown" value="Down" onmousedown="loadXMLDoc(2)" onmouseup="loadXMLDoc(3)" />
+<div><input type="button" id="btnLeft" value="Left" onmousedown="loadXMLDoc(4)" onmouseup="loadXMLDoc(5)" />
+<div><input type="button" id="btnRight" value="Right" onmousedown="loadXMLDoc(6)" onmouseup="loadXMLDoc(7)" />
+</div>
+
+</body>
+</html>
