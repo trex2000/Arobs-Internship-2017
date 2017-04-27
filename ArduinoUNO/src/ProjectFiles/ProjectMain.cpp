@@ -33,6 +33,13 @@
 /*Include Header files*/
 #include <ProjectMain.h>
 
+/*IO*/
+#include "IO_extern.h"
+
+/*applications*/
+#include "lights_extern.h"
+#include "motors_extern.h"
+
 /*FOR PWM*/
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -66,7 +73,7 @@ static TaskType_stType tasks_st[] = {
 	{ T_INTERVAL_40MS,	task40ms },
 	{ T_INTERVAL_60MS,	task60ms },
 	{ T_INTERVAL_100MS,	task100ms },
-	{ T_INTERVAL_1000MS,task1000ms},
+	{ T_INTERVAL_1000MS,task1000ms},			
 };
 
 /**
@@ -111,6 +118,8 @@ void setup()
 	timer0_init();	
 	timer1_init();	
 	//Application inits:
+	motorsInit();
+	lightsInit();
 	}
 
 
@@ -167,6 +176,7 @@ void task40ms(void) {
 void task60ms(void) {
 	
 };
+
 
 /**
 * @brief Implementation of function that handle the 100ms requests
