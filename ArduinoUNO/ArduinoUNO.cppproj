@@ -176,6 +176,7 @@
     <Folder Include="src\ProjectFiles\App\lights" />
     <Folder Include="src\ProjectFiles\App\motors" />
     <Folder Include="src\ProjectFiles\App" />
+    <Folder Include="src\ProjectFiles\IO_HAL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\arduino\cores\arduino\abi.cpp">
@@ -311,6 +312,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ProjectFiles\App\motors\motors_extern.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ProjectFiles\IO_HAL\IO.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ProjectFiles\IO_HAL\IO.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ProjectFiles\IO_HAL\IO_extern.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ProjectFiles\ProjectMain.cpp">
