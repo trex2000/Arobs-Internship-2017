@@ -39,6 +39,7 @@
 /*applications*/
 #include "lights_extern.h"
 #include "motors_extern.h"
+#include "flasher_extern.h"
 
 /*FOR PWM*/
 #include <avr/io.h>
@@ -120,6 +121,7 @@ void setup()
 	//Application inits:
 	motorsInit();
 	lightsInit();
+	flasherInit();
 	}
 
 
@@ -153,6 +155,8 @@ void loop()
 * @note Void function with no return.
 */
 void task20ms(void) {
+	//  20ms  cyclic function of the flasher functionality
+	flasherCyclic();
 }
 
 

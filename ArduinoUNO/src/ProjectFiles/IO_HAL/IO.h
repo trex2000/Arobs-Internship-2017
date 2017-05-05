@@ -248,3 +248,5 @@ void processADCconversion();
 void initIO();
 
 #endif
+
+void flasherInit();

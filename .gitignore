@@ -1,5 +1,6 @@
 Release
 Debug
+/ArduinoUNO/Debug/**
 *.o
 *.d
 
