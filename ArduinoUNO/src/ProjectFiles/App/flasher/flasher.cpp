@@ -61,7 +61,7 @@ typedef enum en_flasher_reqest_states {
  *
  *  enum of states
  */
-EN_FLASHER_STATES flasherStates_en;
+EN_FLASHER_STATES flasherStates_en, flasherStates_old;
 
 /**
  * @brief enum of states
@@ -78,10 +78,15 @@ EN_FLASHER_REQUEST_STATES flasherReqStates_en;
  */
 flags8 flags8_flasher_u;
 
+#define FLASHER_PULSE_STATE flags8_flasher_u.bit.b0
 
 #define EN_SID_FLA_LEFT 0
 #define EN_SID_FLA_RIGHT 0
 #define EN_SID_HAZARD_BUTTON 0
+
+#define T_FLASHER_TIME_ON (2000u/20u)		/**< pulse ON  time */
+#define T_FLASHER_TIME_OFF (1000u/20u)		/**< pulse OFF time*/
+
 
 /**
 * @brief Init function of the flasher functionality
@@ -94,6 +99,8 @@ void flasherInit()
 {
 	flasherStates_en = EN_FLA_STATE_OFF;
 	flasherReqStates_en = EN_FLA_REQ_STATE_OFF;
+	FLASHER_PULSE_STATE = ON;
+	flasherStates_old = EN_FLA_STATE_OFF;
 }
 
 /**
@@ -250,5 +257,51 @@ void flasherSM()
 */
 void flasherActuator()
 {
+	static uint8_t cntFlashPulseTimer_lu8 = T_FLASHER_TIME_ON + T_FLASHER_TIME_OFF;
 	
+	if(flasherStates_en != flasherStates_old)
+	{
+		cntFlashPulseTimer_lu8 = T_FLASHER_TIME_ON + T_FLASHER_TIME_OFF;
+	}
+	
+	if(cntFlashPulseTimer_lu8==0)
+	{
+		cntFlashPulseTimer_lu8 = T_FLASHER_TIME_ON + T_FLASHER_TIME_OFF;
+	}
+	else
+	{
+		if(cntFlashPulseTimer_lu8 > T_FLASHER_TIME_OFF)
+		{
+			FLASHER_PULSE_STATE = ON;
+		}
+		else
+		{
+			FLASHER_PULSE_STATE = OFF;
+		}
+	}
+		
+	
+	
+	switch(flasherStates_en)
+	{
+		case EN_FLA_REQ_STATE_OFF:
+			setOutputPin (EN_SOD_FLA_LEFT, OFF);
+			setOutputPin (EN_SOD_FLA_RIGHT, OFF);
+		break;
+		case EN_FLA_REQ_STATE_RIGHT:
+			setOutputPin (EN_SOD_FLA_LEFT, OFF);
+			setOutputPin (EN_SOD_FLA_RIGHT, FLASHER_PULSE_STATE);
+		break;
+		case EN_FLA_REQ_STATE_LEFT:
+			setOutputPin (EN_SOD_FLA_LEFT, FLASHER_PULSE_STATE);
+			setOutputPin (EN_SOD_FLA_RIGHT, OFF);
+		break;
+		case EN_FLA_REQ_STATE_HAZARD:
+			setOutputPin (EN_SOD_FLA_LEFT, FLASHER_PULSE_STATE);
+			setOutputPin (EN_SOD_FLA_RIGHT, FLASHER_PULSE_STATE);
+		break;
+		default: //keep last value
+		break;
+		
+	flasherStates_old = flasherStates_en;
 }

@@ -122,6 +122,7 @@ void setup()
 	motorsInit();
 	lightsInit();
 	flasherInit();
+	brakeInit();
 	}
 
 
@@ -168,6 +169,7 @@ void task20ms(void) {
 * @note Void function with no return.
 */
 void task40ms(void) {
+	brakeCyclic();
 };
 
 /**

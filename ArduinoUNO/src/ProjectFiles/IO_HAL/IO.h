@@ -65,6 +65,7 @@ typedef enum en_output_pins {
 	EN_SOD_LEFT_FLASHER,				/**< Digital out for Left Flasher */
 	EN_SOD_RIGHT_FLASHER,				/**< Digital out for Right Flasher */
 	EN_SOD_LOW_BEAM,					/**< Digital out for Low Beam */
+	EN_SODPWM_BRAKE_LIGHT,					/**< Digital out for Brake Lights */
 	EN_NUMBER_OF_ELEMENTS_OUTPUTS       /**< Number of output pins  */
 }EN_OUTPUT_PINS;
 

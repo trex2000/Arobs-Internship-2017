@@ -22,6 +22,8 @@
 #ifndef CUSTOM_TYPES_H_
 #define CUSTOM_TYPES_H_
 
+#define ON 1
+#define OFF 0
 
 /*Include Arduino headers*/
 #include <Arduino.h>

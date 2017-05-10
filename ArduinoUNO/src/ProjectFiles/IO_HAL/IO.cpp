@@ -77,7 +77,9 @@ PORT_TYPES_ST const matchingTableOutputPins_acst[EN_NUMBER_OF_ELEMENTS_OUTPUTS] 
 	{PORTD3, EN_PORT_D, EN_PORT_DOPWM},  /**<ODPWM_EnableMotor2 */
 	{PORTC2, EN_PORT_C, EN_PORT_DO},     /**<SOD_LeftFlasher */
 	{PORTC1, EN_PORT_C, EN_PORT_DO},     /**<SOD_RightFlasher */
-	{PORTD6, EN_PORT_D, EN_PORT_DO}      /**<SOD_LowBeam */
+	{PORTD6, EN_PORT_D, EN_PORT_DO},      /**<SOD_LowBeam */
+	{PORTB7, EN_PORT_B, EN_PORT_DOPWM}		 /**<SOD_BrakeLights */
+	
 };
 /**
  * @brief New datatype used in table which connects Logical Input Definitions to Physical Input Def
