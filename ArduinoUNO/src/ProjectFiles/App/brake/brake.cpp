@@ -27,6 +27,7 @@
 #include "custom_types.h"
 #include "brake.h"
 #include "IO_extern.h"
+#include "low_beam.h"
 
 typedef enum en_brakeLight_states {
 	EN_BRAKE_STATE_BRAKING ,				/**< Braking */
@@ -62,8 +63,8 @@ EN_BRAKE_REQUEST_STATES brakeReqStates_en;
  *  union of flags
  */
 flags8 flags8_brake_u;
-#define BRAKE_PEDAL_INPUT flags8_brake_u.bit.b0
-#define LIGHT_STATE flags8_brake_u.bit.b1
+#define BRAKE_PEDAL_INPUT flags8_brake_u.bits.b0
+#define LIGHT_STATE flags8_brake_u.bits.b1
 
 #define TIME_BRAKE_STUCK_DETECTION (1000u/40u)       /**< 1 sec in 40 ms cyclic task*/
 
@@ -124,7 +125,7 @@ void brakeInputsAQ()
 	{
 		cntBrakeInputStuckDetection_lu8 = TIME_BRAKE_STUCK_DETECTION;
 	}
-	if(BRAKE_PEDAL_INPUT))  //brake button pressed
+	if(BRAKE_PEDAL_INPUT)  //brake button pressed
 	{
 		brakeReqStates_en = EN_BRAKE_REQ_STATE_BRAKING;
 	}

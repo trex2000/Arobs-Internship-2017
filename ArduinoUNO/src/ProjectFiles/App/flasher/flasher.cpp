@@ -78,7 +78,7 @@ EN_FLASHER_REQUEST_STATES flasherReqStates_en;
  */
 flags8 flags8_flasher_u;
 
-#define FLASHER_PULSE_STATE flags8_flasher_u.bit.b0
+#define FLASHER_PULSE_STATE flags8_flasher_u.bits.b0
 
 #define EN_SID_FLA_LEFT 0
 #define EN_SID_FLA_RIGHT 0
@@ -285,23 +285,23 @@ void flasherActuator()
 	switch(flasherStates_en)
 	{
 		case EN_FLA_REQ_STATE_OFF:
-			setOutputPin (EN_SOD_FLA_LEFT, OFF);
-			setOutputPin (EN_SOD_FLA_RIGHT, OFF);
+			setOutputPin (EN_SOD_LEFT_FLASHER, OFF);
+			setOutputPin (EN_SOD_RIGHT_FLASHER, OFF);
 		break;
 		case EN_FLA_REQ_STATE_RIGHT:
-			setOutputPin (EN_SOD_FLA_LEFT, OFF);
-			setOutputPin (EN_SOD_FLA_RIGHT, FLASHER_PULSE_STATE);
+			setOutputPin (EN_SOD_LEFT_FLASHER, OFF);
+			setOutputPin (EN_SOD_RIGHT_FLASHER, FLASHER_PULSE_STATE);
 		break;
 		case EN_FLA_REQ_STATE_LEFT:
-			setOutputPin (EN_SOD_FLA_LEFT, FLASHER_PULSE_STATE);
-			setOutputPin (EN_SOD_FLA_RIGHT, OFF);
+			setOutputPin (EN_SOD_LEFT_FLASHER, FLASHER_PULSE_STATE);
+			setOutputPin (EN_SOD_RIGHT_FLASHER, OFF);
 		break;
 		case EN_FLA_REQ_STATE_HAZARD:
-			setOutputPin (EN_SOD_FLA_LEFT, FLASHER_PULSE_STATE);
-			setOutputPin (EN_SOD_FLA_RIGHT, FLASHER_PULSE_STATE);
+			setOutputPin (EN_SOD_LEFT_FLASHER, FLASHER_PULSE_STATE);
+			setOutputPin (EN_SOD_RIGHT_FLASHER, FLASHER_PULSE_STATE);
 		break;
 		default: //keep last value
 		break;
-		
+	}
 	flasherStates_old = flasherStates_en;
 }

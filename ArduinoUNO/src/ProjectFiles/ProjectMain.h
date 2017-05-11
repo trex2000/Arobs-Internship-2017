@@ -13,6 +13,7 @@
 
 /*Include Arduino headers*/
 #include <Arduino.h>
+#include "low_beam.h"
 
 #define ARDUINO_MAIN
 
@@ -81,7 +82,9 @@ void task20ms(void);
  * Alternatively, you can use #Box_The_Function_Name.
  * @return void
  */
-void task40ms(void);
+void task40ms(void){
+	lowBeamCyclic();
+}
 
 /**
  * @brief Function declaration for tasks which are executed every 60ms
