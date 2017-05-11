@@ -23,11 +23,11 @@
  * Created: 5/4/2017 3:17:52 PM
  *  Author: octavian.rusu
  */ 
-
+#include "low_beam_extern.h"
 #include "custom_types.h"
 #include "brake.h"
 #include "IO_extern.h"
-#include "low_beam.h"
+
 
 typedef enum en_brakeLight_states {
 	EN_BRAKE_STATE_BRAKING ,				/**< Braking */

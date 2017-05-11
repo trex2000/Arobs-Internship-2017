@@ -40,6 +40,7 @@
 #include "lights_extern.h"
 #include "motors_extern.h"
 #include "flasher_extern.h"
+#include "brake_extern.h"
 
 /*FOR PWM*/
 #include <avr/io.h>
@@ -170,6 +171,7 @@ void task20ms(void) {
 */
 void task40ms(void) {
 	brakeCyclic();
+	lowBeamCyclic();
 };
 
 /**

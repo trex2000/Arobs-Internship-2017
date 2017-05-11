@@ -82,9 +82,9 @@ void task20ms(void);
  * Alternatively, you can use #Box_The_Function_Name.
  * @return void
  */
-void task40ms(void){
-	lowBeamCyclic();
-}
+void task40ms(void);
+	
+
 
 /**
  * @brief Function declaration for tasks which are executed every 60ms

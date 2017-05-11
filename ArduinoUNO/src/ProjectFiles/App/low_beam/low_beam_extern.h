@@ -28,7 +28,7 @@ extern void lowBeamInit();
 * @return void
 * @note Void function with no return.
 */
-extern void lowbeamCyclic();
+extern void lowBeamCyclic();
 
 extern int getLightsState();
 
